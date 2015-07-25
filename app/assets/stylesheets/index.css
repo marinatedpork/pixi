@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#map-canvas{
+	height: 100%;
+	width: 100%;
+	margin: 0; 
+	padding: 0;
+}
+
+.infoWindow img{
+	float: left;
+	max-height: 200px;
+	border-radius: 50%;
+	margin: 20px;
+}
+
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px
+}
+
+#panel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+}
+
+nav {
+	position: fixed;
+	top: 0; left: 0; right: 0;
+	height: 50px;
+	z-index: 10;
+	background-color: white;
+	display: flex;
+	justify-content: space-around;
+  align-items: center;
+}
+
+label {
+	cursor: pointer;
+}
