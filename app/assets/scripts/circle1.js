@@ -7,7 +7,7 @@ $(function(){
   var count = 1;
   var HEIGHT = $(window).height();
   var WIDTH = $(window).width();
-  var orbSrc = 'http://i.imgur.com/cYTZm9X.png';
+  var orbSrc = 'http://i.imgur.com/JGVS5kS.png';
   var bgSrc = 'http://i.imgur.com/e568HZR.jpg';
 
   stage = new PIXI.Container({
@@ -58,7 +58,6 @@ $(function(){
       .on('touchmove', onPointerMove);
 
   function onPointerMove(eventData) {
-  	console.log(eventData);
 	  displacementSprite.x = eventData.data.global.x - 100;
 	  displacementSprite.y = eventData.data.global.y - displacementSprite.height /2;
 	}
@@ -75,26 +74,30 @@ $(function(){
   	if (count === 150 || count === 1) {
   		out = !out;
   	}
-  	// graphics.rotation += 0.01;
+
   	graphics.clear();
 
-  	
-  	
+    var width = WIDTH/2,
+        height = HEIGHT/2,
+        outWidth = (WIDTH/2) + count,
+        outHeight = (HEIGHT/2) + count,
+        inWidth = (WIDTH/2) - count,
+        inHeight = (HEIGHT/2) - count;
 
   	graphics.beginFill((0x0000FF * count), 0.8);
-  	graphics.drawCircle((WIDTH/2), ((HEIGHT/2) - count), count);
+  	graphics.drawCircle(width, inHeight, count);
   	graphics.endFill();
 
   	graphics.beginFill((0xFF0000 * count), 0.8);
-  	graphics.drawCircle((WIDTH/2), ((HEIGHT/2) + count), count);
+  	graphics.drawCircle(width, outHeight, count);
   	graphics.endFill();
 
   	graphics.beginFill((0x00FFFF * count), 0.8);
-  	graphics.drawCircle(((WIDTH/2) - count), (HEIGHT/2), count);
+  	graphics.drawCircle(inWidth, height, count);
   	graphics.endFill();
 
   	graphics.beginFill((0xFFFF00 * count), 0.8);
-  	graphics.drawCircle(((WIDTH/2) + count), (HEIGHT/2), count);
+  	graphics.drawCircle(outWidth, height, count);
   	graphics.endFill();
 	  renderer.render(stage);
   	requestAnimationFrame(animate);

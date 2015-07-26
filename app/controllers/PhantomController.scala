@@ -29,17 +29,14 @@ object PhantomController extends Controller {
 		Ok(views.html.index())
 	}
 
-	def create = Action { implicit request =>
-		val params = request.body.asFormUrlEncoded.get
-		val message = params("message")(0).toString
-		val phantom = new Phantom(
-			BSONObjectID.generate,
-			whenCreated  = Some(DateTime.now(UTC)),
-			whenUpdated  = None,
-			message
-		)
-		collection.insert(phantom)
-		Redirect(routes.PhantomController.index)
+	def show(example: String) = Action { implicit request =>
+		example match {
+			case "cat"     => Ok(views.html.cat())
+			case "click"   => Ok(views.html.click())
+			case "circle1" => Ok(views.html.circle1())
+			case "circle2" => Ok(views.html.circle2())
+			case _         => Ok(views.html.index())
+		}
 	}
 
 	def edit(id: String) = Action.async {
